@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kriteria;
 use App\Models\Crips;
+use App\Models\Penilaian;
 
 class KriteriaController extends Controller
 {
@@ -87,6 +88,7 @@ class KriteriaController extends Controller
 
             $kriteria = Kriteria::findOrFail($id);
             $kriteria->delete();
+            Penilaian::truncate();
 
         } catch (Exception $e) {
             \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());

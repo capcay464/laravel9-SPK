@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Crips;
 use App\Models\Kriteria;
+use App\Models\Penilaian;
 
 class CripsController extends Controller
 {
@@ -57,6 +58,7 @@ class CripsController extends Controller
         try {
             $crips = Crips::findOrFail($id);
             $crips->delete();
+            Penilaian::truncate();
         } catch (Exception $e) {
             \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
             die("Gagal");
