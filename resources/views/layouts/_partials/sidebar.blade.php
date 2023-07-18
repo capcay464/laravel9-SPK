@@ -50,7 +50,7 @@
     <hr class="sidebar-divider my-0">
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('perhitungan.index') }}">
+        <a class="nav-link" href="{{ route('register')}}">
             <i class="fas fa-fw fa-user-circle"></i>
             <span>Data Pengguna</span></a>
     </li>

@@ -44,6 +44,42 @@
 
                         </div>
 
+                        <div class="form-group">
+                            <label for="nama">NIK</label>
+                            <input type="number" class="form-control @error ('nik') is-invalid @enderror" name="nik" value="{{ old('nik') }}">
+
+                            @error('nik')
+                                <div class="invalid-feedback" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nama">Alamat</label>
+                            <input type="text" class="form-control @error ('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') }}">
+
+                            @error('alamat')
+                                <div class="invalid-feedback" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nama">Telepon</label>
+                            <input type="number" class="form-control @error ('telepon') is-invalid @enderror" name="telepon" value="{{ old('telepon') }}">
+
+                            @error('telepon')
+                                <div class="invalid-feedback" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                        </div>
+
                         <button class="btn btn-primary">Simpan</button>
                     </form>
                 </div>
@@ -62,13 +98,21 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="listkriteria">
                 <div class="card-body">
+                    <a href="{{ URL::to('download-alternatif-pdf') }}" target="_blank">
+                        <button class="btn btn-sm btn-success float-right">Download PDF</button>
+                    </a>
+                    <br><br>
                     <div class="table-responsive">
                         <table class="table table-striped table-hover" id="DataTable">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Warga</th>
+                                    <th>NIK</th>
+                                    <th>Alamat</th>
+                                    <th>Telepon</th>
                                     <th>Aksi</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -77,6 +121,9 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $row->nama_alternatif }}</td>
+                                        <td>{{ $row->nik }}</td>
+                                        <td>{{ $row->alamat }}</td>
+                                        <td>{{ $row->telepon }}</td>
                                         <td>
                                             <a href="{{ route('alternatif.edit',$row->id) }}" class="btn btn-sm btn-circle btn-warning">
                                             <i  class="fa fa-edit"></i>

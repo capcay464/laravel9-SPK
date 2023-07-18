@@ -36,6 +36,41 @@
                             @enderror
 
                         </div>
+                        <div class="form-group">
+                            <label for="nama">NIK</label>
+                            <input type="number" class="form-control @error ('nik') is-invalid @enderror" name="nik" value="{{ $alternatif->nik }}">
+
+                            @error('nik')
+                                <div class="invalid-feedback" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nama">Alamat</label>
+                            <input type="text" class="form-control @error ('alamat') is-invalid @enderror" name="alamat" value="{{ $alternatif->alamat }}">
+
+                            @error('alamat')
+                                <div class="invalid-feedback" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nama">Telepon</label>
+                            <input type="number" class="form-control @error ('telepon') is-invalid @enderror" name="telepon" value="{{ $alternatif->telepon }}">
+
+                            @error('telepon')
+                                <div class="invalid-feedback" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                        </div>
                         <button class="btn btn-primary">Simpan</button>
                         <a href="{{ route('alternatif.index') }}" class="btn btn-success">Kembali</a>
                     </form>

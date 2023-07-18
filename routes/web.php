@@ -24,3 +24,5 @@ Route::resource('crips', 'App\Http\Controllers\CripsController')->except(['index
 // Route::get('/penilaian', [App\Http\Controllers\PenilaianController::class, 'index'])->name('penilaian.index');
 Route::resource('/penilaian', 'App\Http\Controllers\PenilaianController');
 Route::get('/perhitungan', [App\Http\Controllers\AlgoritmaController::class, 'index'])->name('perhitungan.index');
+Route::get('download-perhitungan-pdf', [App\Http\Controllers\AlgoritmaController::class, 'downloadPDF']);
+Route::get('download-alternatif-pdf', [App\Http\Controllers\AlternatifController::class, 'downloadPDF']);

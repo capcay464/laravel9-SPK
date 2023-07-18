@@ -1,6 +1,18 @@
 @extends('layouts.app')
 @section('title', 'SPK Penerima Bantuan')
 @section('content')
+        
+        <div class="mb-4">
+            <!-- Card Header - Accordion -->
+            <div class="row">
+                <div class="col">
+                    <a href="{{ URL::to('download-perhitungan-pdf') }}" target="_blank">
+                        <button class="btn btn-sm btn-success float-right">Download PDF</button>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
 
         <div class="card shadow mb-4">
                 <!-- Card Header - Accordion -->
@@ -111,7 +123,7 @@
                                     <th rowspan="2" style="text-align: center; padding-bottom: 45px">Rank</th>
                                 </tr>
                                 <tr>
-                                    <th>Bobot</th>
+                                    <th>Nama / Bobot</th>
                                     @foreach ($kriteria as $key => $value)
                                         <th>{{ $value->bobot }}</th>
                                     @endforeach

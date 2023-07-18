@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Alternatif;
+use App\Models\Penilaian;
+use PDF;
+use Carbon\Carbon;
 
 class AlternatifController extends Controller
 {
@@ -23,7 +26,9 @@ class AlternatifController extends Controller
         $this->validate($request, [
 
             'nama_alternatif' => 'required|string',
-
+            'nik' => 'required|string',
+            'alamat' => 'required|string',
+            'telepon' => 'required|string',
 
         ]);
 
@@ -31,6 +36,9 @@ class AlternatifController extends Controller
 
             $alternatif = new Alternatif();
             $alternatif->nama_alternatif = $request->nama_alternatif;
+            $alternatif->nik = $request->nik;
+            $alternatif->alamat = $request->alamat;
+            $alternatif->telepon = $request->telepon;
             $alternatif->save();
             return back()->with('msg','Berhasil Menambahkan Data');
 
@@ -55,6 +63,9 @@ class AlternatifController extends Controller
         $this->validate($request, [
 
             'nama_alternatif' => 'required|string',
+            'nik' => 'required|string',
+            'alamat' => 'required|string',
+            'telepon' => 'required|string',
 
         ]);
 
@@ -63,6 +74,9 @@ class AlternatifController extends Controller
             $alternatif = Alternatif::findOrFail($id);
             $alternatif->update([
                 'nama_alternatif' => $request->nama_alternatif,
+                'nik' => $request->nik,
+                'alamat' => $request->alamat,
+                'telepon' => $request->telepon
             ]);
             return back()->with('msg','Berhasil Mengubah Data');
 
@@ -78,11 +92,22 @@ class AlternatifController extends Controller
 
             $alternatif = Alternatif::findOrFail($id);
             $alternatif->delete();
+            Penilaian::truncate();
 
         } catch (Exception $e) {
             \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
             die("Gagal");
         }
 
+    }
+
+    public function downloadPDF() {
+        setlocale(LC_ALL, 'IND');
+        $tanggal = Carbon::now()->formatLocalized('%A, %d %B %Y');
+        $alternatif = Alternatif::with('penilaian.crips')->get();
+
+        $pdf = PDF::loadView('admin.alternatif.alternatif-pdf',compact('alternatif','tanggal'));
+        $pdf->setPaper('A3', 'potrait');
+        return $pdf->stream('alternatif.pdf');
     }
 }
