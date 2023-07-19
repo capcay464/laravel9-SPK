@@ -68,7 +68,7 @@ class AlgoritmaController extends Controller
    //     arsort($ranking);
 
         $sortedData = collect($ranking)->sortByDesc(function ($value) {
-            return $value[9];
+            return array_sum($value);
         })->toArray();
         
        // dd($sortedData);
@@ -135,7 +135,7 @@ class AlgoritmaController extends Controller
      //   arsort($ranking);
 
      $sortedData = collect($ranking)->sortByDesc(function ($value) {
-        return $value[9];
+        return array_sum($value);
     })->toArray();
 
 

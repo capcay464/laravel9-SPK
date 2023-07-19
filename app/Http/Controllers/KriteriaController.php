@@ -19,7 +19,7 @@ class KriteriaController extends Controller
 
     public function index(){
 
-        $data['kriteria'] = Kriteria::orderBy('nama_kriteria','ASC')->get();
+        $data['kriteria'] = Kriteria::orderBy('id','ASC')->get();
         return view('admin.kriteria.index',$data);
 
     }
