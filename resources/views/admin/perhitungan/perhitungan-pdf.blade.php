@@ -76,7 +76,7 @@
                         </thead>
                         <tbody>
                             @php $no = 1;@endphp
-                                @foreach($ranking as $key => $value)
+                                @foreach($sortedData as $key => $value)
                                     <tr>
                                         <td>{{ $key }}</td>
                                         @foreach($value as $key_1 => $value_1)

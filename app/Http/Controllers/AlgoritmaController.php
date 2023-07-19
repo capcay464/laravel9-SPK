@@ -132,10 +132,14 @@ class AlgoritmaController extends Controller
             $ranking[$key][] = array_sum($rank[$key]);
         }
         
-        arsort($ranking);
+     //   arsort($ranking);
+
+     $sortedData = collect($ranking)->sortByDesc(function ($value) {
+        return $value[9];
+    })->toArray();
 
 
-        $pdf = PDF::loadView('admin.perhitungan.perhitungan-pdf',compact('alternatif','kriteria','normalisasi','ranking','tanggal'));
+        $pdf = PDF::loadView('admin.perhitungan.perhitungan-pdf',compact('alternatif','kriteria','normalisasi','sortedData','tanggal'));
         $pdf->setPaper('A3', 'potrait');
         return $pdf->stream('perhitungan.pdf');
     }
