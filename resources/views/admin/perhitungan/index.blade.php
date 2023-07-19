@@ -85,9 +85,9 @@
                                         <td>{{ $key }}</td>
                                                 @foreach($value as $key_1 => $value_1)
                                                 <td> 
-                                                    
+                                                    @if($value[count($value)-1] != $key_1)
                                                         {{ $value_1 }}
-                                                    
+                                                    @endif
                                                 </td>
                                                 @endforeach
                                     </tr>
@@ -129,15 +129,15 @@
                             </thead>
                             <tbody>
                                 @php $no = 1;@endphp
-                                    @foreach($ranking as $key => $value)
-                                        <tr>
-                                            <td>{{ $key }}</td>
-                                            @foreach($value as $key_1 => $value_1)
-                                                <td>{{ number_format($value_1,2) }}</td>
-                                            @endforeach
-                                            <td>{{ $no++ }}</td>
-                                        </tr>
+                                @foreach($sortedData as $key => $value)
+                                <tr>
+                                    <td>{{ $key }}</td>
+                                    @foreach($value as $key_1 => $value_1)
+                                    <td>{{ number_format($value_1, 1) }}</td>
                                     @endforeach
+                                    <td>{{ $no++ }}</td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                 </div>

@@ -59,15 +59,27 @@ class AlgoritmaController extends Controller
                 $rank[$key][] = $value[$value_1->id] * $value_1->bobot;
             }
         }
+        
+
         $ranking = $normalisasi;
         foreach ($normalisasi as $key => $value) {
             $ranking[$key][] = array_sum($rank[$key]);
         }
+   //     arsort($ranking);
+
+        $sortedData = collect($ranking)->sortByDesc(function ($value) {
+            return $value[9];
+        })->toArray();
         
-        arsort($ranking);
-     //   dd($normalisasi);
-        return view('admin.perhitungan.index', compact('alternatif','kriteria','normalisasi','ranking'));
+       // dd($sortedData);
+        return view('admin.perhitungan.index', compact('alternatif','kriteria','normalisasi','sortedData'));
     }
+
+
+
+
+
+
 
     public function downloadPDF() {
         setlocale(LC_ALL, 'IND');
