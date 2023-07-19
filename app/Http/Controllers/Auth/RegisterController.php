@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use PDF;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -29,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+     protected $redirectTo = '/user';
 
     /**
      * Create a new controller instance.
@@ -38,7 +40,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
@@ -53,6 +55,10 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'alamat' => 'required|string',
+            'telepon' => 'required|string',
+            'keterangan' => 'required|string',
+            
         ]);
     }
 
@@ -68,6 +74,54 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'alamat' => $data['alamat'],
+            'telepon' => $data['telepon'],
+            'keterangan' => $data['keterangan'],
         ]);
+    }
+
+    public function store(Request $request){
+
+        try {
+
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->alamat = $request->alamat;
+            $user->telepon = $request->telepon;
+            $user->keterangan = $request->keterangan;
+            $alternatif->save();
+            return back()->with('msg','Berhasil Menambahkan Data');
+
+        } catch (Exception $e) {
+            \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
+            die("Gagal");
+        }
+
+    }
+
+    public function destroy($id){
+
+        try {
+
+            $user = User::findOrFail($id);
+            $user->delete();
+
+        } catch (Exception $e) {
+            \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
+            die("Gagal");
+        }
+
+    }
+
+    public function downloadPDF() {
+        setlocale(LC_ALL, 'IND');
+        $tanggal = Carbon::now()->formatLocalized('%A, %d %B %Y');
+        $user = User::get();
+
+        $pdf = PDF::loadView('admin.user.user-pdf',compact('user','tanggal'));
+        $pdf->setPaper('A3', 'potrait');
+        return $pdf->stream('user.pdf');
     }
 }

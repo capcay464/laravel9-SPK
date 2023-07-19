@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Kriteria;
 use App\Models\Crips;
 use App\Models\Penilaian;
+use PDF;
+use Carbon\Carbon;
 
 class KriteriaController extends Controller
 {
@@ -102,5 +104,15 @@ class KriteriaController extends Controller
         $data['crips'] = Crips::where('kriteria_id', $id)->get();
         $data['kriteria'] = Kriteria::findOrFail($id);
         return view('admin.kriteria.show', $data);
+    }
+
+    public function downloadPDF() {
+        setlocale(LC_ALL, 'IND');
+        $tanggal = Carbon::now()->formatLocalized('%A, %d %B %Y');
+        $kriteria = Kriteria::get();
+
+        $pdf = PDF::loadView('admin.kriteria.kriteria-pdf',compact('kriteria','tanggal'));
+        $pdf->setPaper('A3', 'potrait');
+        return $pdf->stream('kriteria.pdf');
     }
 }

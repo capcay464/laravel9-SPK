@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form action="{{ route('user.store') }}" method="post"">
                         @csrf
 
                         <div class="row mb-3">
@@ -61,10 +61,50 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="alamat" class="col-md-4 col-form-label text-md-end">Alamat</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error ('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') }}">
+
+                                @error('alamat')
+                                <div class="invalid-feedback" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="telepon" class="col-md-4 col-form-label text-md-end">Telepon</label>
+
+                            <div class="col-md-6">
+                                <input type="number" class="form-control @error ('telepon') is-invalid @enderror" name="telepon" value="{{ old('telepon') }}">
+
+                            @error('telepon')
+                                <div class="invalid-feedback" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="keterangan" class="col-md-4 col-form-label text-md-end">Keterangan</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error ('keterangan') is-invalid @enderror" name="keterangan" value="{{ old('keterangan') }}">
+
+                            @error('keterangan')
+                                <div class="invalid-feedback" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                            </div>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                <button type="submit" class="btn btn-primary float-right">
+                                    Tambah Data
                                 </button>
                             </div>
                         </div>
