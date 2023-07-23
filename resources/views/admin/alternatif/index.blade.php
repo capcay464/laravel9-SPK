@@ -98,7 +98,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="listkriteria">
                 <div class="card-body">
-                    <a href="{{ URL::to('download-alternatif-pdf') }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm float-right"><i
+                    <a href="{{ URL::to('download-alternatif-pdf') }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm float-right"><i
                         class="fas fa-download fa-sm text-white-50"></i>Download Laporan</a>
                     <br><br>
                     <div class="table-responsive">

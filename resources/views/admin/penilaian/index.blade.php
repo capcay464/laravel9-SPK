@@ -21,9 +21,13 @@
                         </div>
                         @endif
                     <div class="table-responsive">
+                        <a href="{{ URL::to('download-penilaian-pdf') }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+                            class="fas fa-download fa-sm text-white-50"></i>Download Laporan</a>
                         <form action="{{ route('penilaian.store')}}" method="post">
                             @csrf
-                            <button class="btn btn-sm btn-primary float-right">Simpan</button>
+                            <div class="float-right">
+                                <button class="btn btn-sm btn-primary">Simpan</button>
+                            </div>
                             <br><br>
                             <table class="table">
                                 <thead>

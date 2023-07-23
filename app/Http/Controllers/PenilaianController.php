@@ -5,7 +5,12 @@ use Illuminate\Http\Request;
 use App\Models\Penilaian;
 use App\Models\Alternatif;
 use App\Models\Kriteria;
+use App\Models\Crips;
+use Carbon\Carbon;
 use DB;
+use PDF;
+
+
 
 class PenilaianController extends Controller
 {
@@ -36,5 +41,17 @@ class PenilaianController extends Controller
             \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
             die("Gagal");
         }
+    }
+
+    public function downloadPDF() {
+        setlocale(LC_ALL, 'IND');
+        $tanggal = Carbon::now()->formatLocalized('%A, %d %B %Y');
+        $penilaian = Kriteria::get();
+        $alternatif = Alternatif::with('penilaian.crips')->get();
+        $kriteria = Kriteria::with('crips')->get();
+
+        $pdf = PDF::loadView('admin.penilaian.penilaian-pdf',compact('kriteria','tanggal','alternatif','penilaian'));
+        $pdf->setPaper('A3', 'potrait');
+        return $pdf->stream('penilaian.pdf');
     }
 }

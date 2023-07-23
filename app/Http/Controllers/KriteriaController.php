@@ -115,4 +115,16 @@ class KriteriaController extends Controller
         $pdf->setPaper('A3', 'potrait');
         return $pdf->stream('kriteria.pdf');
     }
+
+    public function downloadCripsPDF($id) {
+        setlocale(LC_ALL, 'IND');
+        $tanggal = Carbon::now()->formatLocalized('%A, %d %B %Y');
+        $kriteria = Kriteria::with('crips')->findOrFail($id);
+        $crips = Crips::where('kriteria_id', $id)->get();
+        
+
+        $pdf = PDF::loadView('admin.kriteria.crips-pdf',compact('kriteria','tanggal','crips'));
+        $pdf->setPaper('A3', 'potrait');
+        return $pdf->stream('crips.pdf');
+    }
 }

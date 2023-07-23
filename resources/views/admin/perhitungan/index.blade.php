@@ -6,7 +6,7 @@
             <!-- Card Header - Accordion -->
             <div class="row">
                 <div class="col">
-                    <a href="{{ URL::to('download-perhitungan-pdf') }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm float-right"><i
+                    <a href="{{ URL::to('download-perhitungan-pdf') }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm float-right"><i
                         class="fas fa-download fa-sm text-white-50"></i>Download Laporan</a>
                 </div>
             </div>
