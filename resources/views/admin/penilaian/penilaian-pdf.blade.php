@@ -49,7 +49,7 @@
 
       <hr class="garis1"/>
       <div style="margin-top: 25px; margin-bottom: 25px;">
-        <center><strong><u>LIST CRIPS / SUB KRITERIA</u></strong></center>
+        <center><strong><u>LIST PENILAIAN</u></strong></center>
       </div>
 
       <div class="collapse show" id="listkriteria">
