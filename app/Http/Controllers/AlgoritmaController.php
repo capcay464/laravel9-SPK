@@ -22,7 +22,7 @@ class AlgoritmaController extends Controller
         $alternatif = Alternatif::with('penilaian.crips')->get();
         $kriteria = Kriteria::with('crips')->orderBy('nama_kriteria','ASC')->get();
         $penilaian = Penilaian::with('crips','alternatif')->get();
-         if ($penilaian->count()) {
+         if (count($penilaian) == 0) {
              return redirect(route('penilaian.index'));
          }
         

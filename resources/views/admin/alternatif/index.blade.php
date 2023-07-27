@@ -102,7 +102,7 @@
                         class="fas fa-download fa-sm text-white-50"></i>Download Laporan</a>
                     <br><br>
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover" id="DataTable">
+                        <table class="table table-striped table-hover" id="DataTable" data-paging="false">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -137,7 +137,11 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-end">
+                            {{ $alternatif->links() }}
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         </div>

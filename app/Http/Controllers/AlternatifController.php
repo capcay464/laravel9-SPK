@@ -17,7 +17,7 @@ class AlternatifController extends Controller
 
     public function index(){
 
-        $data['alternatif'] = Alternatif::get();
+        $data['alternatif'] = Alternatif::latest()->paginate(10);
         return view('admin.alternatif.index',$data);
 
     }

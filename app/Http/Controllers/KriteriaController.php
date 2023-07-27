@@ -19,7 +19,7 @@ class KriteriaController extends Controller
 
     public function index(){
 
-        $data['kriteria'] = Kriteria::orderBy('id','ASC')->get();
+        $data['kriteria'] = Kriteria::orderBy('id','ASC')->paginate(10);
         return view('admin.kriteria.index',$data);
 
     }
@@ -101,7 +101,7 @@ class KriteriaController extends Controller
 
     public function show($id)
     {
-        $data['crips'] = Crips::where('kriteria_id', $id)->get();
+        $data['crips'] = Crips::where('kriteria_id', $id)->paginate(10);
         $data['kriteria'] = Kriteria::findOrFail($id);
         return view('admin.kriteria.show', $data);
     }

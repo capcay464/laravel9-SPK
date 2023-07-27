@@ -90,7 +90,7 @@
                         <a href="{{ URL::to('download-kriteria-pdf') }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm float-right"><i
                             class="fas fa-download fa-sm text-white-50"></i>Download Laporan</a>
                         <br><br>
-                        <table class="table table-striped table-hover" id="DataTable">
+                        <table class="table table-striped table-hover" id="DataTable" data-paging="false">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -127,6 +127,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-end">
+                            {{ $kriteria->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
