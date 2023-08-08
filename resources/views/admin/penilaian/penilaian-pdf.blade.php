@@ -71,18 +71,13 @@
                             <tr>
                                 <td>{{ $valt->nama_alternatif }}</td>
                                 @if (count($valt->penilaian) > 0)
-                                        @foreach($kriteria as $key => $value)
-                                        <td> 
-                                                                                                 
-                                                    @foreach($value->crips as $k_1 => $v_1)
-                                                    {{ $v_1->nama_crips }}
-                                                    
-                                                @endforeach
-                                            
-                                        </td>
-                                        @endforeach
-                               
-                                @endif
+                                @foreach($valt->penilaian as $key => $value)
+                                <td> 
+                                    {{ $value->crips->nama_crips }}
+                                </td>
+                                @endforeach
+
+                            @endif
                             </tr>
                         @empty
                             <tr>

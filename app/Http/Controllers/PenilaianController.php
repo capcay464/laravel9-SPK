@@ -46,9 +46,12 @@ class PenilaianController extends Controller
     public function downloadPDF() {
         setlocale(LC_ALL, 'IND');
         $tanggal = Carbon::now()->formatLocalized('%A, %d %B %Y');
-        $penilaian = Kriteria::get();
+        // $penilaian = Kriteria::get();
+        // $alternatif = Alternatif::with('penilaian.crips')->get();
+        // $kriteria = Kriteria::with('crips')->get();
         $alternatif = Alternatif::with('penilaian.crips')->get();
-        $kriteria = Kriteria::with('crips')->get();
+        $kriteria = Kriteria::with('crips')->orderBy('nama_kriteria','ASC')->get();
+        $penilaian = Penilaian::with('crips','alternatif')->get();
 
         $pdf = PDF::loadView('admin.penilaian.penilaian-pdf',compact('kriteria','tanggal','alternatif','penilaian'));
         $pdf->setPaper('A3', 'potrait');
