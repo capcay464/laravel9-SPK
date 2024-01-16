@@ -10,7 +10,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item {{ request()->is('/') ? 'active':'' }}">
         <a class="nav-link" href="/">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -25,13 +25,13 @@
     </div>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
+    <li class="nav-item {{ request()->Is('kriteria*') ? 'active':'' }}">
         <a class="nav-link" href="{{ route('kriteria.index') }}">
             <i class="fas fa-fw fa-code"></i>
             <span>Data Kriteria</span></a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ request()->Is('alternatif*') ? 'active':'' }}">
         <a class="nav-link" href="{{ route('alternatif.index') }}">
             <i class="fas fa-fw fa-users"></i>
             <span>Data Warga / Alternatif</span></a>
@@ -45,13 +45,13 @@
         METODE SAW
     </div>
 
-    <li class="nav-item">
+    <li class="nav-item {{ request()->Is('penilaian*') ? 'active':'' }}">
         <a class="nav-link" href="{{ route('penilaian.index') }}">
             <i class="fas fa-fw fa-bell"></i>
             <span>Penilaian</span></a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ request()->Is('perhitungan*') ? 'active':'' }}">
         <a class="nav-link" href="{{ route('perhitungan.index') }}">
             <i class="fas fa-fw fa-book"></i>
             <span>Perhitungan</span></a>
@@ -60,7 +60,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <li class="nav-item">
+    <li class="nav-item {{ request()->Is('user*') ? 'active':'' }}">
         <a class="nav-link" href="{{ route('user.index')}}">
             <i class="fas fa-fw fa-user-circle"></i>
             <span>Data Pengguna</span></a>
