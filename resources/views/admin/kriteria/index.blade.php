@@ -87,9 +87,9 @@
             <div class="collapse show" id="listkriteria">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <a href="{{ URL::to('download-kriteria-pdf') }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm float-right"><i
+                        <a href="{{ URL::to('download-kriteria-pdf') }}" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm float-left"><i
                             class="fas fa-download fa-sm text-white-50"></i>Download Laporan</a>
-                        <br><br>
+                        
                         <table class="table table-striped table-hover" id="DataTable" data-paging="false">
                             <thead>
                                 <tr>
