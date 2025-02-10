@@ -23,7 +23,7 @@ class AlgoritmaController extends Controller
         $kriteria = Kriteria::with('crips')->orderBy('nama_kriteria','ASC')->get();
         $penilaian = Penilaian::with('crips','alternatif')->get();
          if (count($penilaian) == 0) {
-             return redirect(route('penilaian.index'));
+             return redirect(route('penilaian.index'))->with('empty','Data Kosong Silahkan Isi Terlbih Dahulu');
          }
         
         //mencari min max normalisasi

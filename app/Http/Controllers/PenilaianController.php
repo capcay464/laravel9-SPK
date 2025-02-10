@@ -7,7 +7,9 @@ use App\Models\Alternatif;
 use App\Models\Kriteria;
 use App\Models\Crips;
 use Carbon\Carbon;
-use DB;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Exception;
 use PDF;
 
 
@@ -38,7 +40,7 @@ class PenilaianController extends Controller
 
             return back()->with('msg', 'Berhasil Disimpan!');
        } catch (Exception $e) {
-            \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
+            Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
             die("Gagal");
         }
     }

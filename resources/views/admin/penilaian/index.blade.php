@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @section('title', 'SPK Penerima Bantuan')
+@section('topbar', 'Data Penilaian')
 @section('content')
 
 
 
-        <div class="mb-4">
+        {{-- <div class="mb-4">
             <!-- Card Header - Accordion -->
             <div class="row">
                 <div class="col">
@@ -12,7 +13,7 @@
                         class="fas fa-download fa-sm text-white-50"></i>Download Laporan</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="card shadow mb-4">
                 <!-- Card Header - Accordion -->
@@ -32,6 +33,11 @@
                             </button>
                         </div>
                         @endif
+                        @if (session('empty'))
+                        <div class="alert alert-danger">
+                            {{ session('empty') }}
+                        </div>
+                    @endif
                     <div class="table-responsive">
                         
                         <form action="{{ route('penilaian.store')}}" method="post">

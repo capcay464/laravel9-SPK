@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', 'SPK Penerima Bantuan | Crips')
+@section('topbar', 'Data Crips')
 @section('css')
 
 <!-- Custom styles for this page -->

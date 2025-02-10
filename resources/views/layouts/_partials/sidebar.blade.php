@@ -1,17 +1,16 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        
-        <div class="sidebar-brand-text mx-3">SPK Penerima Bantuan</div>
+    <a class="sidebar-brand d-flex align-items-center justify-content-center"  href="{{ route('home') }}">   
+        <div class="sidebar-brand-text mx-3">SPK Penerima Bantuan</div>   
     </a>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item {{ request()->is('/') ? 'active':'' }}">
-        <a class="nav-link" href="/">
+    <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('home') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -64,6 +63,12 @@
         <a class="nav-link" href="{{ route('user.index')}}">
             <i class="fas fa-fw fa-user-circle"></i>
             <span>Data Pengguna</span></a>
+    </li>
+
+    <li class="nav-item {{ request()->Is('laporan*') ? 'active':'' }}">
+        <a class="nav-link" href="{{ route('laporan')}}">
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>Laporan</span></a>
     </li>
 
     <!-- Divider -->

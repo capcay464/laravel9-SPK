@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', 'SPK Penerima Bantuan')
+@section('topbar', 'Data User')
 @section('css')
 
 <!-- Custom styles for this page -->
@@ -8,7 +9,7 @@
 @section('content')
 
 
-<div class="mb-4">
+{{-- <div class="mb-4">
     <!-- Card Header - Accordion -->
     <div class="row">
         <div class="col">
@@ -17,7 +18,7 @@
         </div>
     </div>
     
-</div>
+</div> --}}
 
 <div class="card shadow mb-4">
     <!-- Card Header - Accordion -->

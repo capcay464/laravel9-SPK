@@ -5,6 +5,11 @@
         <i class="fa fa-bars"></i>
     </button>
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="navbar-brand">@yield('topbar')</div>
+        </div>
+    </nav>
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
@@ -15,10 +20,12 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                
+                <i class="fas fa-user-circle fa-lg text-gray-600 mr-2"></i>
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
-                {{-- <img class="img-profile rounded-circle"
-                    src="img/undraw_profile.svg"> --}}
+                {{-- <img class="img-profile rounded-circle" src="img/undraw_profile.svg"> --}}
             </a>
+            
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="userDropdown">

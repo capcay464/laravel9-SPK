@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('title', 'SPK Penerima Bantuan')
+@section('topbar', 'Data Perhitungan')
 @section('content')
         
-        <div class="mb-4">
+        {{-- <div class="mb-4">
             <!-- Card Header - Accordion -->
             <div class="row">
                 <div class="col">
@@ -10,7 +11,7 @@
                         class="fas fa-download fa-sm text-white-50"></i>Download Laporan</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="card shadow mb-4">
                 <!-- Card Header - Accordion -->
